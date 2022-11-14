@@ -4,11 +4,18 @@ print("Bienvenue dans le juste prix")
 play = True
  
 def game():
-    winning_number = randint(1, 100)
-    user_number = int(input("Entrez un nombre \n"))
-    lives = 4
-    last_bigger= 100
+    max_str = input("Entrer un nombre maximum \n")
+    while not max_str.isdigit():
+        max_str = input("Entrer un nombre maximum valide \n")
+    max = int(max_str)
+    lives_str = input("Entrez le nombre de vies \n")
+    while not lives_str.isdigit():
+        lives_str = input("Entrez le nombre de vies \n")
+    lives = int(lives_str)
+    winning_number = randint(1, max)
+    last_bigger= max
     last_less = 1
+    user_number = int(input("Entrez un nombre entre "+str(last_less)+" et "+ str(last_bigger)+"\n"))
 
     while user_number != winning_number and lives > 0:
         lives -= 1
