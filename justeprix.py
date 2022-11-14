@@ -1,10 +1,10 @@
-import random
+from random import randint
 
 print("Bienvenue dans le juste prix")
 play = True
  
 def game():
-    winningNumber = random.randint(1, 100)
+    winningNumber = randint(1, 100)
     userNumber = int(input("Entrez un nombre \n"))
     lives = 4
     lastbigger = 100
@@ -14,10 +14,12 @@ def game():
         lives -= 1
         if userNumber > winningNumber:
             print("c'est moins.")
-            lastbigger = userNumber
+            if userNumber< lastbigger:
+                lastbigger = userNumber
         elif userNumber < winningNumber:
             print("c'est plus")
-            lastless = userNumber
+            if userNumber> lastless:
+                lastless = userNumber
         print("il vous reste " + str(lives+1))
         userNumber = int(
             input("Entrez un nombre entre " + str(lastless) + " et "+str(lastbigger) + "\n"))
@@ -27,7 +29,7 @@ def game():
         print("Le juste prix était " + str(winningNumber))
     else:
         print("Ceci est le jsute prix bien joué")
-    choix = input("Voulez vous rejouer? o/n")
+    choix = input("Voulez vous rejouer? o/n \n")
     if choix == "o":
         return True
     elif choix == "n":
